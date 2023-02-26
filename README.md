@@ -3,7 +3,7 @@
 
 ## Полезные ссылки по проекту 
 (каждый проект заполняет под себя):
-  - [База знаний по проекту](https://miro.com/app/board/uXjVPjK_iOw=/?share_link_id=115273625923)
+  - [База знаний по проекту](https://miro.com/app/board/uXjVPjLVYR0=/?share_link_id=618335925369)
   - 
 
 ## Git-Flow:

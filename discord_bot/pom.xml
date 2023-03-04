@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.0.4</version>
+    </parent>
+
+    <groupId>com.core</groupId>
+    <artifactId>discord_bot</artifactId>
+    <version>${revision}</version>
+    <name>discord_bot</name>
+    <description>discord_bot</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>bot</module>
+        <module>zoom</module>
+        <module>yandex</module>
+    </modules>
+
+    <properties>
+        <java.version>17</java.version>
+        <release.vertion>17</release.vertion>
+
+        <checkstyle.version>9.2.1</checkstyle.version>
+        <checkstyle.plugin.version>3.1.1</checkstyle.plugin.version>
+        <enforce.plugin.version>3.0.0-M2</enforce.plugin.version>
+
+        <lombok.version>1.18.20</lombok.version>
+        <log4j.version>2.12.1</log4j.version>
+
+        <revision>0.0.${buildNumber}</revision>
+        <buildNumber>1</buildNumber>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <optional>true</optional>
+                <version>${lombok.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- Do not run checkstyle for pom packaged module -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>checkstyle-validation</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+                <inherited>false</inherited>
+            </plugin>
+
+            <!--      ENFORCE: Во время сборки обеспечиваем выполнение правил-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${enforce.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>enforce</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>[3.0,)</version>
+                                    <message>Invalid Maven version. It should, at least, be 3.0</message>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>[17, 18)</version>
+                                    <message>Invalid Java version. It should be 17</message>
+                                </requireJavaVersion>
+                                <!--Убеждаемся, что все зависимости сходятся к одной и той же версии (exclusions)-->
+                                <dependencyConvergence/>
+                                <!--Запрещаем дублирование зависимостей в рамках одного pom-->
+                                <banDuplicatePomDependencyVersions/>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${checkstyle.plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>${checkstyle.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <id>checkstyle-validation</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                            <configuration>
+                                <configLocation>checkstyle.xml</configLocation>
+                                <consoleOutput>true</consoleOutput>
+                                <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

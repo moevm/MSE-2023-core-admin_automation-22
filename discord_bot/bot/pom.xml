@@ -40,6 +40,12 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.discord4j</groupId>
+            <artifactId>discord4j-core</artifactId>
+            <version>${discord4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -34,8 +34,7 @@
         <lombok.version>1.18.20</lombok.version>
         <log4j.version>2.12.1</log4j.version>
 
-        <revision>0.0.${buildNumber}</revision>
-        <buildNumber>1</buildNumber>
+        <revision>0.1.0</revision>
     </properties>
 
     <dependencyManagement>

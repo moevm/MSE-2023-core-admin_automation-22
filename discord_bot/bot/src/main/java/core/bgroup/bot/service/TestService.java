@@ -1,4 +1,4 @@
-package core.bgroup.bot.servicies;
+package core.bgroup.bot.service;
 
 public interface TestService {
 

@@ -1,6 +1,6 @@
-package core.bgroup.yandex.servicies.impl;
+package core.bgroup.yandex.service.impl;
 
-import core.bgroup.yandex.servicies.YandexTestService;
+import core.bgroup.yandex.service.YandexTestService;
 import org.springframework.stereotype.Service;
 
 @Service

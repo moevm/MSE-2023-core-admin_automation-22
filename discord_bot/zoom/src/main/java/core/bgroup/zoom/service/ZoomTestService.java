@@ -1,4 +1,4 @@
-package core.bgroup.zoom.servicies;
+package core.bgroup.zoom.service;
 
 public interface ZoomTestService {
 

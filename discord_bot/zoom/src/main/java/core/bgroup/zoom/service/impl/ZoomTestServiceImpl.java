@@ -1,6 +1,6 @@
-package core.bgroup.zoom.servicies.impl;
+package core.bgroup.zoom.service.impl;
 
-import core.bgroup.zoom.servicies.ZoomTestService;
+import core.bgroup.zoom.service.ZoomTestService;
 import org.springframework.stereotype.Service;
 
 @Service

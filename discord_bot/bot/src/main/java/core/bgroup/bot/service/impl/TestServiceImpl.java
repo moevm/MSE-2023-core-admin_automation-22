@@ -1,6 +1,6 @@
-package core.bgroup.bot.servicies.impl;
+package core.bgroup.bot.service.impl;
 
-import core.bgroup.bot.servicies.TestService;
+import core.bgroup.bot.service.TestService;
 import org.springframework.stereotype.Service;
 
 @Service

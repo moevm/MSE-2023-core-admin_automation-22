@@ -16,18 +16,18 @@ import java.util.List;
 public class MessageListener {
     private final MessageReadingService readingService;
     private final MessageHandlingService handlingService;
-    private Snowflake lastMessageSnowflake;
+    private Snowflake lastSnowflake;
 
     public MessageListener(MessageReadingService readingService, MessageHandlingService handlingService) {
         this.readingService = readingService;
         this.handlingService = handlingService;
-        this.lastMessageSnowflake = Snowflake.of(Instant.now());
+        this.lastSnowflake = Snowflake.of(Instant.now());
     }
 
     @Scheduled(fixedDelayString = "${discord.listen-delay}")
     public void listen() {
-        List<MessageData> messages = readingService.readMessagesAfter(lastMessageSnowflake);
-        lastMessageSnowflake = Snowflake.of(Instant.now());
+        List<MessageData> messages = readingService.readMessagesAfter(lastSnowflake);
+        lastSnowflake = Snowflake.of(Instant.now());
         if (!messages.isEmpty()) {
             messages.forEach(handlingService::handleMessage);
         }

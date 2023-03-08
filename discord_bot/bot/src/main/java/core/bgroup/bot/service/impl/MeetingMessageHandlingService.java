@@ -4,9 +4,9 @@ import core.bgroup.bot.service.MessageHandlingService;
 import core.bgroup.bot.service.MessageWritingService;
 import discord4j.core.DiscordClient;
 import discord4j.discordjson.json.MessageData;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class MeetingMessageHandlingService implements MessageHandlingService {
     private final DiscordClient discordClient;
     private final MessageWritingService writingService;

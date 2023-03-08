@@ -5,11 +5,11 @@ import discord4j.common.util.Snowflake;
 import discord4j.core.DiscordClient;
 import discord4j.discordjson.json.MessageData;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+@Service
 public class ChannelMessageReadingService implements MessageReadingService {
     private final Snowflake channelSnowflake;
     private final DiscordClient discordClient;

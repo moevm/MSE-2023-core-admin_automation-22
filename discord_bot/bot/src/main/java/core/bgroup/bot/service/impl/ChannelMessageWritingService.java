@@ -4,9 +4,9 @@ import core.bgroup.bot.service.MessageWritingService;
 import discord4j.common.util.Snowflake;
 import discord4j.core.DiscordClient;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ChannelMessageWritingService implements MessageWritingService {
     private final Snowflake channelSnowflake;
     private final DiscordClient discordClient;

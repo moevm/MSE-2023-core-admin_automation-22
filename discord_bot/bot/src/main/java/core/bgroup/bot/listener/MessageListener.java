@@ -28,8 +28,6 @@ public class MessageListener {
     public void listen() {
         List<MessageData> messages = readingService.readMessagesAfter(lastSnowflake);
         lastSnowflake = Snowflake.of(Instant.now());
-        if (!messages.isEmpty()) {
-            messages.forEach(handlingService::handleMessage);
-        }
+        messages.forEach(handlingService::handleMessage);
     }
 }

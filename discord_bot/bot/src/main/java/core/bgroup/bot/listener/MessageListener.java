@@ -24,7 +24,7 @@ public class MessageListener {
         this.lastMessageSnowflake = Snowflake.of(Instant.now());
     }
 
-    @Scheduled(fixedRateString = "${discord.listen-rate}")
+    @Scheduled(fixedDelayString = "${discord.listen-delay}")
     public void listen() {
         List<MessageData> messages = readingService.readMessagesAfter(lastMessageSnowflake);
         lastMessageSnowflake = Snowflake.of(Instant.now());

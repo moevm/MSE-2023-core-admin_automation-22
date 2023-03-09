@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  db_task_manager:
+    container_name: db_discord_bot
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_USER=test
+    image: postgres:14.5

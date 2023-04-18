@@ -34,6 +34,7 @@
         <lombok.version>1.18.20</lombok.version>
         <log4j.version>2.12.1</log4j.version>
         <discord4j.version>3.2.3</discord4j.version>
+        <yandex-sdk.version>1.03</yandex-sdk.version>
 
         <revision>0.1.0</revision>
     </properties>

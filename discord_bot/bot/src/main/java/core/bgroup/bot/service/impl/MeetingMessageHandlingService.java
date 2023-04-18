@@ -3,6 +3,9 @@ package core.bgroup.bot.service.impl;
 import core.bgroup.bot.service.MessageHandlingService;
 import core.bgroup.bot.service.MessageWritingService;
 import discord4j.core.DiscordClient;
+import discord4j.core.object.command.ApplicationCommandOption;
+import discord4j.discordjson.json.ApplicationCommandOptionData;
+import discord4j.discordjson.json.ApplicationCommandRequest;
 import discord4j.discordjson.json.MessageData;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,9 @@ public class MeetingMessageHandlingService implements MessageHandlingService {
 
     @Override
     public void handleMessage(MessageData message) {
+
+        System.out.println(message.content());
+
         if (isValidMeetingMessage(message)) {
             answerMeetingMessage(message);
         }

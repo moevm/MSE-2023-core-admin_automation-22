@@ -51,6 +51,12 @@
             <artifactId>discord4j-core</artifactId>
             <version>${discord4j.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>

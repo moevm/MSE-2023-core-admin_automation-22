@@ -21,8 +21,8 @@ public class ZoomMeetingServiceImpl implements ZoomMeetingService {
     private ZoomAccessTokenResponse getAccessTokenResponse() {
         return webClient
                 .post()
-                .uri("oauth/token?grant_type=account_credentials&account_id=XRBP_W_1TA2PW7JZDD62JA")
-                .headers(httpHeaders -> httpHeaders.setBasicAuth("EhTrmNAsR3CKR_wDCmvOzg", "8iDeTZjE0kNQ0Vb0Ewyuna5FI6nheoeq"))
+                .uri("oauth/token?grant_type=account_credentials&account_id=UnO965mlS4yPMjAnHiaAbQ")
+                .headers(httpHeaders -> httpHeaders.setBasicAuth("U5152OFMQyKwPndFr9OlVA", "TuAWfJmXSVDF4jhflAVHoT3HqID51uIH"))
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(ZoomAccessTokenResponse.class)
@@ -32,6 +32,7 @@ public class ZoomMeetingServiceImpl implements ZoomMeetingService {
     @Override
     public String createMeeting(MeetingRequest meetingRequest) {
         String token = getAccessTokenResponse().getAccessToken();
+        System.out.println(token);
         return webClient
                 .post()
                 .uri("v2/users/me/meetings")

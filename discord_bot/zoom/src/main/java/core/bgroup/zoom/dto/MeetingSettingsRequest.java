@@ -27,7 +27,5 @@ public class MeetingSettingsRequest {
     @JsonProperty("auto_recording")
     private String autoRecording;
 
-    @JsonProperty("alternative_hosts")
-    private String alternativeHosts;
 
 }

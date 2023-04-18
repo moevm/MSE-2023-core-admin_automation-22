@@ -20,19 +20,17 @@ public class TestController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public String test() {
-        String hostEmail = "tucha.989@gmail.com";
         MeetingSettingsRequest meetingSettingsRequest = MeetingSettingsRequest.builder()
                 .hostVideo("true")
                 .participantVideo("true")
                 .joinBeforeHost("false")
                 .muteUponEntry("false")
                 .autoRecording("true")
-                .alternativeHosts("nsstrannikova@mail.ru")
                 .build();
         MeetingRequest meetingRequest = MeetingRequest.builder()
                 .topic("test")
                 .type("2")
-                .startTime("2023-03-26T10: 16: 23")
+                .startTime("2023-04-18T23: 10: 00")
                 .duration("45")
                 .timezone("Europe/Moscow")
                 .agenda("test")

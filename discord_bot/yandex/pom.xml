@@ -23,6 +23,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.yandex.android</groupId>
+            <artifactId>disk-restapi-sdk</artifactId>
+            <version>${yandex-sdk.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

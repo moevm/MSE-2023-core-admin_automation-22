@@ -21,7 +21,7 @@ public class ZoomMeetingServiceImpl implements ZoomMeetingService {
         return webClient
                 .post()
                 .uri("oauth/token?grant_type=account_credentials&account_id=UnO965mlS4yPMjAnHiaAbQ")
-                .headers(httpHeaders -> httpHeaders.setBasicAuth("U5152OFMQyKwPndFr9OlVA", "TuAWfJmXSVDF4jhflAVHoT3HqID51uIH"))
+                .headers(httpHeaders -> httpHeaders.setBasicAuth("U5152OFMQyKwPndFr9OlVA", "asqXQwT7k29X4pSC4UoiPWurz9N4vHBh"))
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(ZoomAccessTokenResponse.class)

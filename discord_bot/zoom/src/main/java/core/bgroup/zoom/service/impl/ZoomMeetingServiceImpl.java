@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import java.util.Date;
 
 @Service
 @AllArgsConstructor
@@ -18,7 +17,7 @@ public class ZoomMeetingServiceImpl implements ZoomMeetingService {
 
     private final WebClient webClient;
 
-    private ZoomAccessTokenResponse getAccessTokenResponse() {
+    public ZoomAccessTokenResponse getAccessTokenResponse() {
         return webClient
                 .post()
                 .uri("oauth/token?grant_type=account_credentials&account_id=UnO965mlS4yPMjAnHiaAbQ")

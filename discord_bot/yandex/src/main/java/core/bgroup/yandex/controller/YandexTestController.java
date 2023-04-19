@@ -12,10 +12,10 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/yandex")
-public class TestController {
+public class YandexTestController {
     private final YandexService yandexService;
 
-    public TestController(YandexService yandexService) {
+    public YandexTestController(YandexService yandexService) {
         this.yandexService = yandexService;
     }
 

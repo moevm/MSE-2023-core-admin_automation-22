@@ -35,6 +35,7 @@
         <log4j.version>2.12.1</log4j.version>
         <discord4j.version>3.2.3</discord4j.version>
         <yandex-sdk.version>1.03</yandex-sdk.version>
+        <commons-codec.version>1.15</commons-codec.version>
 
         <revision>0.1.0</revision>
     </properties>

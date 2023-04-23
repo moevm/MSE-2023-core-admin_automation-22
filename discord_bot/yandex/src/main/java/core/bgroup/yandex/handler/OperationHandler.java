@@ -1,6 +1,6 @@
 package core.bgroup.yandex.handler;
 
-public interface OperationEventHandler {
+public interface OperationHandler {
     void onSuccess();
     void onFail();
 }

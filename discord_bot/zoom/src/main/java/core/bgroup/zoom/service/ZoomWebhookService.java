@@ -9,5 +9,5 @@ import java.io.IOException;
 
 public interface ZoomWebhookService {
     WebhookValidationResponse createValidationResponse(WebhookValidationRequestPayload payload);
-    void uploadRecording(RecordingPayload payload) throws ServerIOException, IOException;
+    void processRecording(RecordingPayload payload, String downloadToken) throws ServerIOException, IOException;
 }

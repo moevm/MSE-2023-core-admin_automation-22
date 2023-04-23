@@ -31,7 +31,7 @@ public class WebhookController {
             }
             case "recording.completed" -> {
                 RecordingPayload recordingPayload = mapper.treeToValue(request.getPayload(), RecordingPayload.class);
-                zoomWebhookService.uploadRecording(recordingPayload);
+                zoomWebhookService.processRecording(recordingPayload, request.getDownloadToken());
             }
         }
         return null;

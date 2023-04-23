@@ -1,6 +1,7 @@
 package core.bgroup.bot.config;
 
 import core.bgroup.bot.events.EventListener;
+import core.bgroup.bot.service.DiscordService;
 import discord4j.core.DiscordClientBuilder;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.Event;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 @Configuration
 @ComponentScan(basePackages = "core.bgroup.zoom")
@@ -44,5 +46,10 @@ public class BotConfiguration {
         }
 
         return client;
+    }
+
+    @Bean
+    public Consumer<String> recordingLinkConsumer(DiscordService discordService) {
+        return discordService::sendRecordingUploadedMessage;
     }
 }

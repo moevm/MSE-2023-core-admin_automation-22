@@ -1,11 +1,11 @@
 package core.bgroup.yandex.listener;
 
 import com.yandex.disk.rest.RestClient;
+import com.yandex.disk.rest.exceptions.ServerIOException;
 import com.yandex.disk.rest.exceptions.WrongMethodException;
-import com.yandex.disk.rest.exceptions.http.HttpCodeException;
 import com.yandex.disk.rest.json.Link;
 import com.yandex.disk.rest.json.Operation;
-import core.bgroup.yandex.handler.OperationEventHandler;
+import core.bgroup.yandex.handler.OperationHandler;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -14,14 +14,14 @@ import java.util.TimerTask;
 public class OperationListener extends TimerTask {
     private final Link operationLink;
     private final RestClient yandexClient;
-    private final OperationEventHandler operationEventHandler;
+    private final OperationHandler operationHandler;
 
     private Timer timer;
 
-    public OperationListener(Link operationLink, RestClient yandexClient, OperationEventHandler operationEventHandler) {
+    public OperationListener(Link operationLink, RestClient yandexClient, OperationHandler operationHandler) {
         this.operationLink = operationLink;
         this.yandexClient = yandexClient;
-        this.operationEventHandler = operationEventHandler;
+        this.operationHandler = operationHandler;
     }
 
     public void listen(long delay) {
@@ -35,11 +35,11 @@ public class OperationListener extends TimerTask {
             Operation operation = yandexClient.getOperation(operationLink);
             if (operation.isSuccess()) {
                 timer.cancel();
-                operationEventHandler.onSuccess();
+                operationHandler.onSuccess();
             }
-        } catch (WrongMethodException | IOException | HttpCodeException e) {
+        } catch (WrongMethodException | IOException | ServerIOException e) {
             timer.cancel();
-            operationEventHandler.onFail();
+            operationHandler.onFail();
         }
     }
 }

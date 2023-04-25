@@ -5,23 +5,23 @@ import com.yandex.disk.rest.exceptions.ServerIOException;
 import com.yandex.disk.rest.exceptions.WrongMethodException;
 import com.yandex.disk.rest.json.Link;
 import com.yandex.disk.rest.json.Operation;
-import core.bgroup.yandex.handler.OperationHandler;
+import core.bgroup.yandex.handler.YandexOperationHandler;
 
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class OperationListener extends TimerTask {
+public class YandexOperationListener extends TimerTask {
     private final Link operationLink;
     private final RestClient yandexClient;
-    private final OperationHandler operationHandler;
+    private final YandexOperationHandler yandexOperationHandler;
 
     private Timer timer;
 
-    public OperationListener(Link operationLink, RestClient yandexClient, OperationHandler operationHandler) {
+    public YandexOperationListener(Link operationLink, RestClient yandexClient, YandexOperationHandler yandexOperationHandler) {
         this.operationLink = operationLink;
         this.yandexClient = yandexClient;
-        this.operationHandler = operationHandler;
+        this.yandexOperationHandler = yandexOperationHandler;
     }
 
     public void listen(long delay) {
@@ -35,11 +35,11 @@ public class OperationListener extends TimerTask {
             Operation operation = yandexClient.getOperation(operationLink);
             if (operation.isSuccess()) {
                 timer.cancel();
-                operationHandler.onSuccess();
+                yandexOperationHandler.onSuccess();
             }
         } catch (WrongMethodException | IOException | ServerIOException e) {
             timer.cancel();
-            operationHandler.onFail();
+            yandexOperationHandler.onFail();
         }
     }
 }

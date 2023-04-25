@@ -4,8 +4,8 @@ import com.yandex.disk.rest.ResourcesArgs;
 import com.yandex.disk.rest.RestClient;
 import com.yandex.disk.rest.exceptions.ServerIOException;
 import com.yandex.disk.rest.json.Link;
-import core.bgroup.yandex.handler.OperationHandler;
-import core.bgroup.yandex.listener.OperationListener;
+import core.bgroup.yandex.handler.YandexOperationHandler;
+import core.bgroup.yandex.listener.YandexOperationListener;
 import core.bgroup.yandex.service.YandexService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class YandexServiceImpl implements YandexService {
 
     public void uploadFileFromUrl(String url, String path, Consumer<String> consumer) throws ServerIOException, IOException {
         Link operationLink = yandexClient.saveFromUrl(url, path);
-        OperationListener operationListener = new OperationListener(operationLink, yandexClient, new OperationHandler() {
+        YandexOperationListener yandexOperationListener = new YandexOperationListener(operationLink, yandexClient, new YandexOperationHandler() {
             @Override
             public void onSuccess() {
                 try {
@@ -40,7 +40,7 @@ public class YandexServiceImpl implements YandexService {
                 log.error("Failed to upload recording from " + url + " to " + path + "!");
             }
         });
-        operationListener.listen(1000);
+        yandexOperationListener.listen(1000);
     }
 
     public String publishFile(String path) throws ServerIOException, IOException {

@@ -1,0 +1,30 @@
+{
+  "name": "meeting",
+  "description": "Create zoom meeting",
+  "options": [
+    {
+      "name": "topic",
+      "description": "Topic of meeting",
+      "type": 3,
+      "required": true
+    },
+    {
+      "name": "time",
+      "description": "Time of meeting",
+      "type": 3,
+      "required": true
+    },
+    {
+      "name": "agenda",
+      "description": "Agenda of meeting",
+      "type": 3,
+      "required": true
+    },
+    {
+      "name": "host email",
+      "description": "Email of meeting host",
+      "type": 3,
+      "required": true
+    }
+  ]
+}

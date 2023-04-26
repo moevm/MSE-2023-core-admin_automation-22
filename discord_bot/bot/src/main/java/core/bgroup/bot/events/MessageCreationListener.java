@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-public class MessageCreateListener extends MessageListener implements EventListener<MessageCreateEvent> {
+public class MessageCreationListener extends MessageListener implements EventListener<MessageCreateEvent> {
 
-    public MessageCreateListener(ZoomMeetingService zoomMeetingService) {
+    public MessageCreationListener(ZoomMeetingService zoomMeetingService) {
         super(zoomMeetingService);
     }
 

@@ -12,6 +12,11 @@ spring:
     enabled: true
     fail-on-missing-locations: true
 
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
 discord:
   bot-token: ${BOT_TOKEN}
   meeting-channel-id: 1082364732553560135

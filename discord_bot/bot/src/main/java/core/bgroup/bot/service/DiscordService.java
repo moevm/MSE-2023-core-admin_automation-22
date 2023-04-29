@@ -16,7 +16,10 @@ public class DiscordService {
     public void sendRecordingUploadedMessage(String recordingUrl) {
         discordClient.getChannelById(Snowflake.of(1082364732553560135L))
                 .ofType(MessageChannel.class)
-                .flatMap(channel -> channel.createMessage("Запись готова: " + recordingUrl))
+                .flatMap(channel -> {
+                    
+                    return channel.createMessage("Запись готова: " + recordingUrl);
+                })
                 .subscribe();
     }
 }

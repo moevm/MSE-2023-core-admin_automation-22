@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 import java.util.function.Consumer;
-
 @Configuration
 @ComponentScan(basePackages = "core.bgroup.zoom")
 public class BotConfiguration {

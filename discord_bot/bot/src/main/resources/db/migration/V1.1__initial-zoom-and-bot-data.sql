@@ -7,5 +7,6 @@ create table discord_bot_zoom_meeting (
       meetingUUID varchar(255),
       startUrl varchar(1024),
       joinUrl varchar(1024),
+      recordingUrl varchar(1024),
       primary key (id)
 );

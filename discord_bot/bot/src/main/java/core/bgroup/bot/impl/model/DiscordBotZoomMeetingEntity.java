@@ -29,4 +29,7 @@ public class DiscordBotZoomMeetingEntity {
     @Column(name = "join_url", length = 1024)
     private String joinUrl;
 
+    @Column(name = "recording_url", length = 1024)
+    private String recordingUrl;
+
 }

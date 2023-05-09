@@ -14,14 +14,17 @@ import lombok.NoArgsConstructor;
 @Table(name = "discord_bot_zoom_meeting")
 public class DiscordBotZoomMeetingEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id")
     private Long userId;
 
+    @Column(name = "chanel_id")
     private Long chanelId;
 
-    private String meetingUUID;
+    @Column(name = "meeting_id")
+    private Long meetingId;
 
     @Column(name = "start_url", length = 1024)
     private String startUrl;
@@ -31,5 +34,4 @@ public class DiscordBotZoomMeetingEntity {
 
     @Column(name = "recording_url", length = 1024)
     private String recordingUrl;
-
 }

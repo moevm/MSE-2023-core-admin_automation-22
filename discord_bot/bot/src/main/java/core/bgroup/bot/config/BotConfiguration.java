@@ -5,6 +5,7 @@ import core.bgroup.bot.service.DiscordService;
 import discord4j.core.DiscordClientBuilder;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.Event;
+import discord4j.rest.RestClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,11 +15,12 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 import java.util.function.Consumer;
+
 @Configuration
 @ComponentScan(basePackages = "core.bgroup.zoom")
 public class BotConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger( BotConfiguration.class );
+    private static final Logger log = LoggerFactory.getLogger(BotConfiguration.class);
 
     @Value("${discord.bot-token}")
     private String token;
@@ -30,18 +32,18 @@ public class BotConfiguration {
         try {
             client = DiscordClientBuilder.create(token)
                     .build()
+                    .gateway()
                     .login()
                     .block();
 
-            for(EventListener<T> listener : eventListeners) {
+            for (EventListener<T> listener : eventListeners) {
                 client.on(listener.getEventType())
                         .flatMap(listener::execute)
                         .onErrorResume(listener::handleError)
                         .subscribe();
             }
-        }
-        catch ( Exception exception ) {
-            log.error( "Be sure to use a valid bot token!", exception );
+        } catch (Exception exception) {
+            log.error("Be sure to use a valid bot token!", exception);
         }
 
         return client;
@@ -50,5 +52,10 @@ public class BotConfiguration {
     @Bean
     public Consumer<String> recordingLinkConsumer(DiscordService discordService) {
         return discordService::sendRecordingUploadedMessage;
+    }
+
+    @Bean
+    public RestClient discordRestClient(GatewayDiscordClient client) {
+        return client.getRestClient();
     }
 }

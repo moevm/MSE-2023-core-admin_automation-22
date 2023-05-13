@@ -34,25 +34,13 @@ public class MeetingCommand implements SlashCommand {
 
     @Override
     public Mono<Void> handle(ChatInputInteractionEvent event) {
-        String meetingName = event.getOption("meeting-name")
-                .flatMap(ApplicationCommandInteractionOption::getValue)
-                .map(ApplicationCommandInteractionOptionValue::asString)
-                .get();
+        String meetingName = getOptionValueByName(event, "meeting-name");
 
-        String meetingTime = event.getOption("meeting-time")
-                .flatMap(ApplicationCommandInteractionOption::getValue)
-                .map(ApplicationCommandInteractionOptionValue::asString)
-                .get();
+        String meetingTime = getOptionValueByName(event, "meeting-time");
 
-        String hostName = event.getOption("host-name")
-                .flatMap(ApplicationCommandInteractionOption::getValue)
-                .map(ApplicationCommandInteractionOptionValue::asString)
-                .get();
+        String hostName = getOptionValueByName(event, "host-name");
 
-        String tag = event.getOption("tag")
-                .flatMap(ApplicationCommandInteractionOption::getValue)
-                .map(ApplicationCommandInteractionOptionValue::asString)
-                .get();
+        String tag = getOptionValueByName(event, "tag");
 
         JSONObject jsonObject = new JSONObject(processData(meetingTime, meetingName));
         DiscordBotZoomMeetingEntity entity = discordBotZoomMeetingService.create(
@@ -92,5 +80,12 @@ public class MeetingCommand implements SlashCommand {
                 .build();
 
         return zoomMeetingService.createMeeting(meetingRequest);
+    }
+
+    private String getOptionValueByName(ChatInputInteractionEvent event, String name) {
+        return event.getOption(name)
+                .flatMap(ApplicationCommandInteractionOption::getValue)
+                .map(ApplicationCommandInteractionOptionValue::asString)
+                .get();
     }
 }

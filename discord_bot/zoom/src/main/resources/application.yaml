@@ -1,2 +1,7 @@
 zoom:
   token: ${ZOOM_TOKEN}
+  url: "https://zoom.us/"
+  accountId: UnO965mlS4yPMjAnHiaAbQ
+  username: U5152OFMQyKwPndFr9OlVA
+  password: asqXQwT7k29X4pSC4UoiPWurz9N4vHBh
+  meetingUri: v2/users/me/meetings

@@ -60,7 +60,7 @@ public class ZoomWebhookServiceImpl implements ZoomWebhookService {
         yandexService.uploadFileFromUrl(downloadUrl, path, link -> {
             meeting.setRecordingUrl(link);
             meetingRepository.save(meeting);
-            discordService.sendMessageToChannel(meeting.getChanelId(), "Запись готова: " + link);
+            discordService.sendMessageToChannel(meeting.getChannelId(), "Запись готова: " + link);
         });
     }
 }

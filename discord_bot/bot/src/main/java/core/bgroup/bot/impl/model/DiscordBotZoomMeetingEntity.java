@@ -20,8 +20,8 @@ public class DiscordBotZoomMeetingEntity {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "chanel_id")
-    private Long chanelId;
+    @Column(name = "channel_id")
+    private Long channelId;
 
     @Column(name = "meeting_id")
     private Long meetingId;

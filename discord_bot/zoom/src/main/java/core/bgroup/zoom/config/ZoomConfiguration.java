@@ -5,6 +5,7 @@ import core.bgroup.zoom.service.impl.ZoomMeetingServiceImpl;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +19,8 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 @ComponentScan(basePackages = {"core.bgroup.bot", "core.bgroup.yandex"})
 public class ZoomConfiguration {
-    private static final String TOKEN_URL = "https://zoom.us/";
+    @Autowired
+    private ZoomPropertiesConfig zoomPropertiesConfig;
     public static final int TIMEOUT = 1000;
 
     @Bean
@@ -32,7 +34,7 @@ public class ZoomConfiguration {
                 });
 
         return WebClient.builder()
-                .baseUrl(TOKEN_URL)
+                .baseUrl(zoomPropertiesConfig.getUrl())
                 .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
                 .build();
     }

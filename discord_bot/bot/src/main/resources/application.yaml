@@ -19,5 +19,3 @@ spring:
 
 discord:
   bot-token: ${BOT_TOKEN}
-  meeting-channel-id: 1082364732553560135
-  listen-delay: 2000

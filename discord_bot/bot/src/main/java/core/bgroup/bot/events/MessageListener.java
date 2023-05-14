@@ -36,7 +36,7 @@ public abstract class MessageListener {
                             DiscordBotZoomMeetingEntity.builder()
                             .userId(eventMessage.getAuthor().get().getId().asLong())
                             .chanelId(eventMessage.getChannelId().asLong())
-                            .meetingUUID(jsonObject.get("uuid").toString())
+                            .meetingId((Long) jsonObject.get("id"))
                             .startUrl(jsonObject.get("start_url").toString())
                             .joinUrl(jsonObject.get("join_url").toString())
                             .build());

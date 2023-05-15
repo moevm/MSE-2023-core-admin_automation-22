@@ -1,28 +1,28 @@
 {
   "name": "meeting",
-  "description": "Create zoom meeting",
+  "description": "Создание встречи",
   "options": [
     {
-      "name": "topic",
-      "description": "Topic of meeting",
+      "name": "meeting-time",
+      "description": "Время встречи в формате UTC",
       "type": 3,
       "required": true
     },
     {
-      "name": "time",
-      "description": "Time of meeting",
+      "name": "host-name",
+      "description": "ФИО",
       "type": 3,
       "required": true
     },
     {
-      "name": "agenda",
-      "description": "Agenda of meeting",
+      "name": "meeting-name",
+      "description": "Название встречи",
       "type": 3,
       "required": true
     },
     {
-      "name": "host email",
-      "description": "Email of meeting host",
+      "name": "tag",
+      "description": "Команда, для которой нужно уведомление о встрече",
       "type": 3,
       "required": true
     }

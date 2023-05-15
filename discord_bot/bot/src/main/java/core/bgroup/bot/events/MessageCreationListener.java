@@ -9,10 +9,6 @@ import reactor.core.publisher.Mono;
 @Service
 public class MessageCreationListener extends MessageListener implements EventListener<MessageCreateEvent> {
 
-    public MessageCreationListener(ZoomMeetingService zoomMeetingService, DiscordBotZoomMeetingService discordBotZoomMeetingService) {
-        super(zoomMeetingService, discordBotZoomMeetingService);
-    }
-
     @Override
     public Class<MessageCreateEvent> getEventType() {
         return MessageCreateEvent.class;

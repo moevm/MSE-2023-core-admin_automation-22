@@ -19,3 +19,4 @@ spring:
 
 discord:
   bot-token: ${BOT_TOKEN}
+  application-id: 1082976876106100766

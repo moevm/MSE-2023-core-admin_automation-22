@@ -45,7 +45,7 @@ public class BotConfiguration {
 
         return client;
     }
-
+  
     @Bean
     public Consumer<String> recordingLinkConsumer(DiscordService discordService) {
         return discordService::sendRecordingUploadedMessage;

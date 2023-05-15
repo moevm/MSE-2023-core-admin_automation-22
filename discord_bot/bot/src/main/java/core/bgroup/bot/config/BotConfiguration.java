@@ -1,7 +1,6 @@
 package core.bgroup.bot.config;
 
 import core.bgroup.bot.events.EventListener;
-import core.bgroup.bot.service.DiscordService;
 import discord4j.core.DiscordClientBuilder;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.Event;

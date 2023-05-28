@@ -46,10 +46,11 @@ public class MeetingCommand implements SlashCommand {
         DiscordBotZoomMeetingEntity entity = discordBotZoomMeetingService.create(
                 DiscordBotZoomMeetingEntity.builder()
                         .userId(event.getInteraction().getUser().getId().asLong())
-                        .chanelId(event.getInteraction().getChannelId().asLong())
-                        .meetingUUID(jsonObject.get("uuid").toString())
+                        .channelId(event.getInteraction().getChannelId().asLong())
+                        .meetingId((Long) jsonObject.get("id"))
                         .startUrl(jsonObject.get("start_url").toString())
                         .joinUrl(jsonObject.get("join_url").toString())
+                        .meetingName(meetingName)
                         .build());
         User user = event.getInteraction().getUser();
         Objects.requireNonNull(user.getPrivateChannel().block())

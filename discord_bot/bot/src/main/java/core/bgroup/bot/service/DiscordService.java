@@ -19,4 +19,12 @@ public class DiscordService {
                 .flatMap(channel -> channel.createMessage(message))
                 .subscribe();
     }
+
+    public void sendMessageToUser(Long userId, String message) {
+        discordClient
+                .getUserById(Snowflake.of(userId))
+                .flatMap(user -> user.getPrivateChannel()
+                        .flatMap(dm -> dm.createMessage(message)))
+                .subscribe();
+    }
 }

@@ -5,6 +5,7 @@ create table discord_bot_zoom_meeting (
       user_id BIGINT not null,
       channel_id BIGINT not null,
       meeting_id BIGINT,
+      meeting_name varchar(1024),
       start_url varchar(1024),
       join_url varchar(1024),
       recording_url varchar(1024),

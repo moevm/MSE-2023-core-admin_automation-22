@@ -1,7 +1,5 @@
 package core.bgroup.zoom.config;
 
-import core.bgroup.zoom.service.ZoomMeetingService;
-import core.bgroup.zoom.service.impl.ZoomMeetingServiceImpl;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
@@ -17,7 +15,7 @@ import reactor.netty.tcp.TcpClient;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
-@ComponentScan(basePackages = {"core.bgroup.bot", "core.bgroup.yandex"})
+@ComponentScan(basePackages = {"core.bgroup.yandex"})
 public class ZoomConfiguration {
     @Autowired
     private ZoomPropertiesConfig zoomPropertiesConfig;

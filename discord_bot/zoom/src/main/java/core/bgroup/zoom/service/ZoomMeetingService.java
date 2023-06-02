@@ -7,4 +7,6 @@ public interface ZoomMeetingService {
 
     String createMeeting(MeetingRequest meetingRequest);
     ZoomAccessTokenResponse getAccessTokenResponse();
+
+    void deleteRecording(long meetingId);
 }

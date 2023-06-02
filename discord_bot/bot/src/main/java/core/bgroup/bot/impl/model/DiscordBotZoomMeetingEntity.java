@@ -26,6 +26,9 @@ public class DiscordBotZoomMeetingEntity {
     @Column(name = "meeting_id")
     private Long meetingId;
 
+    @Column(name = "meeting_name", length = 1024)
+    private String meetingName;
+
     @Column(name = "start_url", length = 1024)
     private String startUrl;
 

@@ -12,7 +12,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 @Slf4j
 @Configuration
@@ -44,11 +43,6 @@ public class BotConfiguration {
         }
 
         return client;
-    }
-  
-    @Bean
-    public Consumer<String> recordingLinkConsumer(DiscordService discordService) {
-        return discordService::sendRecordingUploadedMessage;
     }
 
     @Bean

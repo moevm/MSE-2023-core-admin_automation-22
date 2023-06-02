@@ -33,6 +33,18 @@ public class ZoomMeetingServiceImpl implements ZoomMeetingService {
     }
 
     @Override
+    public void deleteRecording(long meetingId) {
+        webClient
+                .delete()
+                .uri("v2/meetings/" + meetingId + "/recordings")
+                .headers(httpHeaders -> httpHeaders.setBearerAuth(getAccessTokenResponse().getAccessToken()))
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+    }
+
+    @Override
     public String createMeeting(MeetingRequest meetingRequest) {
         String token = getAccessTokenResponse().getAccessToken();
         System.out.println(token);

@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  backend:
+    container_name: discord_bot
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db_task_manager
+    env_file:
+      - .env
+
+  db_task_manager:
+    container_name: db_discord_bot
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    image: postgres:14.5
